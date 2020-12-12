@@ -1,19 +1,36 @@
-export const STORE =
-[{
-    id: "googleBookmark",
-    title: "Google Bookmark",
-    url: "www.google.com",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor felis ac ante tincidunt, nec mattis ante vestibulum. Morbi et arcu eu odio tincidunt feugiat nec sit amet libero. Proin justo nibh, dignissim eu tincidunt porttitor, placerat nec magna. Sed dui leo, sodales a pellentesque a, fermentum tempor mauris. Etiam ac posuere velit, ac euismod risus. Sed libero ante, eleifend laoreet enim eu, consequat egestas elit. Aliquam eget lacus eget ante sollicitudin bibendum sit amet vitae sapien. Etiam congue interdum blandit. Vestibulum ut nulla nisl. Nulla tristique at libero et rutrum. Aliquam in tortor in quam cursus aliquam. Donec ultrices lectus ac molestie dictum. Ut sodales metus in risus varius fermentum."
-},
-{
-    id: "yahooBookmark",
-    title: "Yahoo Bookmark",
-    url: "www.yahoo.com",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor felis ac ante tincidunt, nec mattis ante vestibulum. Morbi et arcu eu odio tincidunt feugiat nec sit amet libero. Proin justo nibh, dignissim eu tincidunt porttitor, placerat nec magna. Sed dui leo, sodales a pellentesque a, fermentum tempor mauris. Etiam ac posuere velit, ac euismod risus. Sed libero ante, eleifend laoreet enim eu, consequat egestas elit. Aliquam eget lacus eget ante sollicitudin bibendum sit amet vitae sapien. Etiam congue interdum blandit. Vestibulum ut nulla nisl. Nulla tristique at libero et rutrum. Aliquam in tortor in quam cursus aliquam. Donec ultrices lectus ac molestie dictum. Ut sodales metus in risus varius fermentum."
-},
-{
-    id: "aolBookmark",
-    title: "AOL Bookmark",
-    url: "www.aol.com",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi auctor felis ac ante tincidunt, nec mattis ante vestibulum. Morbi et arcu eu odio tincidunt feugiat nec sit amet libero. Proin justo nibh, dignissim eu tincidunt porttitor, placerat nec magna. Sed dui leo, sodales a pellentesque a, fermentum tempor mauris. Etiam ac posuere velit, ac euismod risus. Sed libero ante, eleifend laoreet enim eu, consequat egestas elit. Aliquam eget lacus eget ante sollicitudin bibendum sit amet vitae sapien. Etiam congue interdum blandit. Vestibulum ut nulla nisl. Nulla tristique at libero et rutrum. Aliquam in tortor in quam cursus aliquam. Donec ultrices lectus ac molestie dictum. Ut sodales metus in risus varius fermentum."
-}]
+import $ from 'jQuery'
+
+const items = [];
+let filter = 1
+let error = null
+
+const findById = function (id) {
+  return this.items.find(currentItem => currentItem.id === id);
+};
+
+const addItem = function (item) {
+  this.items.push(item)
+};
+
+const findAndDelete = function (id) {
+  this.items = this.items.filter(currentItem => currentItem.id !== id);
+};
+
+const toggleCheckedFilter = function () {
+  this.hideCheckedItems = !this.hideCheckedItems;
+};
+
+const setError = function(error) {
+  if(error) {this.error = error}
+}
+
+export default {
+  items,
+  filter,
+  error,
+  findById,
+  addItem,
+  findAndDelete,
+  toggleCheckedFilter,
+  setError
+};
